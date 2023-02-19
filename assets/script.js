@@ -1,4 +1,5 @@
 var timerEl = document.getElementById('countdown');
+var startEl = document.querySelector('#start')
 
 // Setting up the timer
 function countdown() {
@@ -15,4 +16,7 @@ function countdown() {
     }, 1000);
 }
 
-countdown();
+// Button to start the quiz 
+startEl.addEventListener('click', function() {
+    countdown();
+})
