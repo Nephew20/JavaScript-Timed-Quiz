@@ -8,13 +8,11 @@ var container2El = document.getElementById('container2');
 var multipleChoice = [
     {
         question: 'Which logical comparison means greater than or equal to?',
-        choices: ['>','<=','>=',],
+        choices: ['>','<=','>='],
         correct: '>='
     }, {
         question: 'What do you use to make a variable assignment?',
-        choice1: 'bar',
-        choice2: 'var',
-        choice3: 'gar',
+        choices: ['bar', 'var', 'gar'],
         correct: '2'
     }
 ]
@@ -53,20 +51,29 @@ function generateQuestions() {
 
         console.log(btnEl)
     } 
-
-    btnEl.addEventListener('click', function () {
+    
+    
+    
+    container2El.addEventListener('click', function () {
         questionsEl.textContent = multipleChoice[1].question;
+        container2El.textContent = ' '
+       
+        for (x=0; x < multipleChoice[1].choices.length; x++) {
+            btnEl2 = document.createElement('button')
+
+            btnEl2.textContent = multipleChoice[1].choices[x];
+
+            container2El.append(btnEl2);
+
+            console.log(btnEl2)
+        }
+
+        // container2El.setAttribute('class', 'display')
     })
 
-    // for (x=0; x < multipleChoice[1].choices.length; x++) {
-    //     btnEl = document.createElement('button')
-
-    //     btnEl.textContent = multipleChoice[0].choices[x];
-
-    //     container2El.append(btnEl);
-
-    //     console.log(btnEl)
-    // }
+    
+    
+    
 }
 
 // Button to start the quiz 
