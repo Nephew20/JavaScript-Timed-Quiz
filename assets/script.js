@@ -5,6 +5,7 @@ var containerEl = document.getElementById('container');
 var answersEl = document.querySelector('#answers');
 var container2El = document.getElementById('container2');
 
+// Array of multiple choice questions
 var multipleChoice = [
     {
         question: 'Which logical comparison means greater than or equal to?',
@@ -13,7 +14,11 @@ var multipleChoice = [
     }, {
         question: 'What do you use to make a variable assignment?',
         choices: ['bar', 'var', 'gar'],
-        correct: '2'
+        correct: 'var'
+    }, {
+        question: 'What is not a conditional statement?',
+        choices: ['but', 'else', 'if'],
+        correct: 'but'
     }
 ]
 
@@ -40,6 +45,8 @@ function countdown() {
 
 // Function to present the questions
 function generateQuestions() {
+   
+   // 1st Question
     questionsEl.textContent = multipleChoice[0].question
    
     for (x=0; x < multipleChoice[0].choices.length; x++) {
@@ -49,11 +56,13 @@ function generateQuestions() {
 
         container2El.append(btnEl);
 
-        console.log(btnEl)
-    } 
-    
-    
-    
+    }
+
+    if (btnEl === multipleChoice.correct) {
+        return 'Correct'
+    }
+
+    // 2nd Question
     container2El.addEventListener('click', function () {
         questionsEl.textContent = multipleChoice[1].question;
         container2El.textContent = ' '
@@ -65,17 +74,26 @@ function generateQuestions() {
 
             container2El.append(btnEl2);
 
-            console.log(btnEl2)
         }
+        // 3rd Question
+        container2El.addEventListener('click', function() {
+            questionsEl.textContent = multipleChoice[2].question;
+            container2El.textContent = ' '
+        
+            for (x=0; x < multipleChoice[2].choices.length; x++) {
+                btnEl3 = document.createElement('button')
 
-        // container2El.setAttribute('class', 'display')
+                btnEl3.textContent = multipleChoice[2].choices[x];
+
+                container2El.append(btnEl3);
+            }
+            
+        })
+
     })
-
-    
-    
-    
+ 
 }
-
+ 
 // Button to start the quiz 
 startEl.addEventListener('click', function () {
     countdown();
